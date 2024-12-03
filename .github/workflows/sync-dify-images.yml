@@ -7,9 +7,6 @@ on:
 
 env:
   ACR_REGISTRY: registry.cn-hangzhou.aliyuncs.com
-  ACR_NAMESPACE: bozi
-  ACR_USERNAME: qiujianbo21
-  ACR_PASSWORD: qiujianbo123.
 
 jobs:
   pull-and-push:
