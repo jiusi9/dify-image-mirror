@@ -23,6 +23,15 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
+      - name: Pull image from Docker Hub
+        run: docker pull vllm/vllm-openai:latest
+
+      - name: Tag dify api image for ACR
+        run: docker tag vllm/vllm-openai:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/vllm/vllm-openai:latest
+
+      - name: Push dify api image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/dify-api:latest
+
       - name: Pull dify api image from Docker Hub
         run: docker pull langgenius/dify-api:latest
 
